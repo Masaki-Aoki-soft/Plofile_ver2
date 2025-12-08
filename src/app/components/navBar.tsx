@@ -92,7 +92,7 @@ export const Navbar = () => {
     ];
 
     const SocialItems: SocialItem[] = [
-        { href: 'https://github.com/bp22013', label: 'GitHub', Icon: Github },
+        { href: 'https://github.com/Masaki-Aoki-soft', label: 'GitHub', Icon: Github },
         {
             href: 'https://www.instagram.com/ma_sa.0218/?next=%2F',
             label: 'Instagram',
