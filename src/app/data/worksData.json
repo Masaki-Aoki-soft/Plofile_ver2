@@ -6,14 +6,14 @@
                 "title": "ポートフォリオ",
                 "description": "このポートフォリオ自体です。フロントエンドはNext.js、メール送信部のバックエンドはHono.jsを使用しています。",
                 "technologies": ["Next.js", "Hono.js", "Three.js", "Framer Motion"],
-                "url": "https://github.com/bp22013/Plofile_ver2",
+                "url": "https://github.com/Masaki-Aoki-soft/Plofile_ver2",
                 "image": "/portfolio.png"
             },
             {
                 "title": "アカウント方式英単語学習アプリ",
                 "description": "知り合いの英語塾に頼まれて作成したものです。生徒をアカウントで管理し、成績や学習履歴を保存できます。",
                 "technologies": ["Next.js", "Hono.js", "Drizzle", "Supabase"],
-                "url": "https://github.com/bp22013/english_speaking_app.Ver2",
+                "url": "https://github.com/Masaki-Aoki-soft/english_speaking_app.Ver2",
                 "image": "/vocabMaster.png"
             }
         ]
@@ -25,8 +25,15 @@
                 "title": "Wake On LAN (WOL) App",
                 "description": "自宅のデスクトップをESP32を用いて屋外から起動するためのアプリです。Expo GoでスマホやWebでテストはできるものの、デプロイには毎月＄99の課金が必要なため、公開はしていません。",
                 "technologies": ["React Native", "Expo", "supabase"],
-                "url": "https://github.com/bp22013/WOL_Expo.ver",
+                "url": "https://github.com/Masaki-Aoki-soft/WOL_Expo.ver",
                 "image": "/WOL_Expo.png"
+            },
+            {
+                "title": "VITPC",
+                "description": "研究室のPCの情報をバックグラウンドでデータベースに保存するWindowsのネイティブアプリです。Next.jsをベースにしたNextronというフレームワークを使用して作成しました",
+                "technologies": ["Nextron", "Clerk", "NeonDB"],
+                "url": "https://github.com/Masaki-Aoki-soft/VITPC",
+                "image": "/VITPC.png"
             }
         ]
     },
@@ -37,14 +44,14 @@
                 "title": "2024年度 鳥人間コンテスト",
                 "description": "この機体の水平尾翼操作やAndroidのアプリ開発を担当しました。",
                 "technologies": ["ESP32（Arduino）", "Java", "C"],
-                "url": "https://github.com/bp22013/s300-main",
+                "url": "https://github.com/Masaki-Aoki-soft/s300-main",
                 "image": "/Miyabi.jpg"
             },
             {
                 "title": "視線トラッキングシステム",
                 "description": "ビジネスモデルコンペティションに参加した時に作成した視線トラッキングシステムです。OpenCVとDlibを用いて、カメラ映像から顔の特徴点を抽出し、視線の動きを解析します。",
                 "technologies": ["Python", "OpenCV", "Dlib"],
-                "url": "https://github.com/bp22013/Eye_tracker",
+                "url": "https://github.com/Masaki-Aoki-soft/Eye_tracker",
                 "image": "/eye_tracker.png"
             }
         ]
