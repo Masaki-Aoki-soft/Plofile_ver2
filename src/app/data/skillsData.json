@@ -103,9 +103,9 @@
                 "description": "React Nativeを使用してios用のネイティブアプリを開発する時に使用しようと試しましたが、ios用だとデプロイに99ドルかかるのであまり使いません。使用感自体はNext.jsとほぼ同じなので、学習コストはそれほどかかりませんでした。"
             },
             {
-                "name": "Electron (Nextron)",
+                "name": "Electron(Nextron)",
                 "path": "/gbl/Electron.glb",
-                "description": "Next.jsを使用してデスクトップアプリを作成する際に使用しました。簡単なアプリを作成するには使い勝手が良いかもしれません。"
+                "description": "Next.jsでデスクトップアプリを作成する際に使用しました。簡単なアプリを作成する場合は使い勝手が良いかもしれません。"
             },
             {
                 "name": " 基本情報技術者",
