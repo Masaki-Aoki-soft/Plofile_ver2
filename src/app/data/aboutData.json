@@ -22,5 +22,11 @@
         "role": "フルスタックエンジニア",
         "period": "2025年4月 - 2025年6月",
         "description": "Next.jsをメインに用いたPerl製の医療系修正管理システムのマイグレーションを担当しました。"
+    },
+    {
+        "company": "株式会社Liquitous",
+        "role": "Webエンジニア",
+        "period": "2024年10月 - 2026年1月",
+        "description": "上流工程およびSvelte-kitを用いたwebアプリの開発を行いました。"
     }
 ]
