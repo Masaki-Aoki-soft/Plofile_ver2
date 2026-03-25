@@ -28,5 +28,17 @@
         "role": "Webエンジニア",
         "period": "2024年10月 - 2026年1月",
         "description": "上流工程およびSvelte-kitを用いたwebアプリの開発を行いました。"
+    },
+    {
+        "company": "芝浦工業大学　卒業",
+        "role": "システム理工学部",
+        "period": "2026年3月",
+        "description": ""
+    },
+    {
+        "company": "芝浦工業大学大学院　入学",
+        "role": "電子情報工学専攻",
+        "period": "2026年4月",
+        "description": ""
     }
 ]

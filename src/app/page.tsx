@@ -66,7 +66,7 @@ const DashBoardPage: NextPage = () => {
                         className={`text-amber-200 text-xl md:text-2xl ${YasashisaFont.className}`}
                     >
                         <TextAnimate animation="blurInUp" by="character" once>
-                            芝浦工業大学 4年
+                            芝浦工業大学大学院 1年
                         </TextAnimate>
                     </div>
 
@@ -75,7 +75,7 @@ const DashBoardPage: NextPage = () => {
                         className={`text-amber-200 text-lg md:text-2xl ${YasashisaFont.className}`}
                     >
                         <TextAnimate animation="blurInUp" by="character" once>
-                            コンピュータサイエンス専攻　画像応用システム研究室
+                            電子情報工学専攻　宇宙ロボットシステム研究室
                         </TextAnimate>
                     </div>
                 </div>
