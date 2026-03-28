@@ -75,13 +75,13 @@ export const Navbar = () => {
             Link: '/skills',
             Display: 'Skills',
             Icon: <Laptop className="w-4 h-4" />,
-            Title: 'Skills　',
+            Title: 'Skills',
         },
         {
             Link: '/works',
             Display: 'works',
             Icon: <BookText className="w-4 h-4" />,
-            Title: 'Works　　',
+            Title: 'Works',
         },
         {
             Link: '/contact',
@@ -117,12 +117,11 @@ export const Navbar = () => {
             <nav className="bg-[#1A0F00]/50 backdrop-blur-md shadow-sm sticky top-0 z-50">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between items-center h-16">
-                        {/* 左：ロゴ＋現在ページ名 */}
                         <div className="flex items-center space-x-3">
-                            <div className="flex items-center justify-center w-10 h-10 rounded-lg">
+                            <div className="flex items-center justify-center w-10 h-10 rounded-lg shrink-0">
                                 <NabvarIcon />
                             </div>
-                            <span className="text-xl font-bold bg-gradient-to-r from-amber-500 via-orange-500 to-amber-500 text-transparent bg-clip-text">
+                            <span className="text-2xl font-bold bg-gradient-to-r from-amber-500 via-orange-500 to-amber-500 text-transparent bg-clip-text inline-block min-w-[100px] sm:min-w-[120px]">
                                 {getCurrentPageTitle()}
                             </span>
                         </div>

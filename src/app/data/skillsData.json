@@ -10,7 +10,7 @@
             {
                 "name": "CSS",
                 "path": "/gbl/CSS.glb",
-                "description": "HTMLと一緒に学び、jqueryなどを触っていましたが、最近はTilwindCSSを使用しています。"
+                "description": "HTMLと一緒に学び、jqueryなどを触っていましたが、最近はTailwindCSSを使用しています。"
             },
             {
                 "name": "JavaScript",

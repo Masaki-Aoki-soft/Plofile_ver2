@@ -14,9 +14,9 @@ import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/ca
 import { motion } from 'framer-motion';
 
 /**
- * ダッシュボード（トップページ）コンポーネント
  * @returns {JSX.Element}
  */
+
 const DashBoardPage: NextPage = () => {
     // 各ページへのリンク情報を定義
     const pages = [
@@ -35,13 +35,15 @@ const DashBoardPage: NextPage = () => {
             <section className="flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-12 w-full max-w-5xl">
                 {/* プロフィール画像 */}
                 <div className="flex w-full justify-center lg:justify-start lg:basis-1/4 lg:shrink-0">
-                    <Image
-                        src="/main-icon.png"
-                        alt="Main Icon"
-                        width={220}
-                        height={220}
-                        className="rounded-full border-2 border-amber-700 bg-[#8b4513] shadow-lg"
-                    />
+                    <div className="relative w-40 h-40 sm:w-44 sm:h-44 md:w-52 md:h-52 lg:w-56 lg:h-56 aspect-square">
+                        <Image
+                            src="/sub-icon.png"
+                            alt="Sub Icon"
+                            fill
+                            className="rounded-full border-2 border-amber-700 bg-[#8b4513] shadow-lg object-cover" // object-coverで比率を維持して切り抜き
+                            priority
+                        />
+                    </div>
                 </div>
 
                 {/* プロフィール情報 */}
@@ -88,13 +90,13 @@ const DashBoardPage: NextPage = () => {
                         <Link key={idx} href={page.href} className="group block">
                             {/* ホバー時に浮き上がるアニメーション */}
                             <motion.div
-                                whileHover={{ y: -6 }} // ホバー時にy軸方向に-6移動
-                                whileTap={{ y: -2 }} // タップ時にy軸方向に-2移動
+                                whileHover={{ y: -6 }}
+                                whileTap={{ y: -2 }}
                                 transition={{
-                                    type: 'spring', // アニメーションの種類
-                                    stiffness: 320, // 硬さ
-                                    damping: 22, // 減衰
-                                    mass: 0.35, // 質量
+                                    type: 'spring',
+                                    stiffness: 320,
+                                    damping: 22,
+                                    mass: 0.35,
                                 }}
                                 className="h-full will-change-transform"
                             >
