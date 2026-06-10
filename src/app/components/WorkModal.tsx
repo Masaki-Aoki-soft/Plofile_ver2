@@ -1,3 +1,5 @@
+/* Worksページ専用モーダル */
+
 'use client';
 
 import React, { useEffect, useRef } from 'react';
@@ -5,13 +7,13 @@ import ReactDOM from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 
-interface CustomModalProps {
+interface WorkModalProps {
     isOpen: boolean;
     onClose: () => void;
     children: React.ReactNode;
 }
 
-export const CustomModal: React.FC<CustomModalProps> = ({ isOpen, onClose, children }) => {
+export const WorkModal: React.FC<WorkModalProps> = ({ isOpen, onClose, children }) => {
     const modalRef = useRef<HTMLDivElement>(null);
 
     // ESCキーでモーダルを閉じる
@@ -52,7 +54,7 @@ export const CustomModal: React.FC<CustomModalProps> = ({ isOpen, onClose, child
                         transition={{ duration: 0.3 }}
                         onClick={(e) => e.stopPropagation()}
                     >
-                        {/* ×ボタン：absolute配置にして通常フローから外す */}
+                        {/* ×ボタン：absolute配置（通常フロー外） */}
                         <button
                             onClick={onClose}
                             className="cursor-pointer absolute top-4 right-4 z-10 p-2 bg-amber-600/20 hover:bg-amber-600/40 rounded-full transition-colors duration-200 group"
@@ -61,8 +63,12 @@ export const CustomModal: React.FC<CustomModalProps> = ({ isOpen, onClose, child
                             <X className="w-5 h-5 text-amber-300 group-hover:text-amber-100" />
                         </button>
 
-                        {/* children をモーダル上端から開始（×ボタンとの重なり回避は右paddingで対応） */}
-                        <div className="pr-10">{children}</div>
+                        {/*
+                          CustomModalと違い、ここではchildrenに右paddingを付けない。
+                          画像や説明文をモーダルのフル幅で中央揃えにするため。
+                          ×ボタンとの重なり回避はページ側でタイトル(h2)にのみpr-12を付けて対応する。
+                        */}
+                        {children}
                     </motion.div>
                 </div>
             )}

@@ -70,6 +70,7 @@ function CategoryCanvas({
     spacingX = 3.4,
     spacingY = 3.0,
     canvasClassName = 'w-full',
+    columns = 3,
 }: {
     category: SkillCategory;
     onModelClick: (skill: Skill) => void;
@@ -77,6 +78,7 @@ function CategoryCanvas({
     spacingX?: number;
     spacingY?: number;
     canvasClassName?: string;
+    columns?: number;
 }) {
     const loadedCount = useRef(0);
 
@@ -85,18 +87,25 @@ function CategoryCanvas({
         if (loadedCount.current === category.models.length) onAllModelsLoaded();
     }, [category.models.length, onAllModelsLoaded]);
 
+    // 列数から行数を算出（例: 6個 ÷ 2列 = 3行）
+    const rows = Math.ceil(category.models.length / columns);
+
+    // columnsに応じてグリッド配置を計算（縦横ともに中央揃え）
     const getPosition = (index: number): [number, number, number] => {
-        const itemsPerRow = 3;
-        const row = Math.floor(index / itemsPerRow);
-        const col = index % itemsPerRow;
-        const x = (col - (itemsPerRow - 1) / 2) * spacingX;
-        const y = -(row * spacingY) + 1;
+        const row = Math.floor(index / columns);
+        const col = index % columns;
+        const x = (col - (columns - 1) / 2) * spacingX;
+        const y = -(row - (rows - 1) / 2) * spacingY;
         return [x, y, 0];
     };
 
+    // 行数が増える（=縦長になる）場合はカメラを引き、キャンバスも高くする
+    const cameraZ = rows >= 3 ? 11.5 : 9;
+    const heightClass = rows >= 3 ? 'h-[480px]' : 'h-[350px] md:h-[400px]';
+
     return (
-        <div className={`mx-auto ${canvasClassName} h-[350px] md:h-[400px]`}>
-            <Canvas camera={{ position: [0, 0, 9], fov: 50 }}>
+        <div className={`mx-auto ${canvasClassName} ${heightClass}`}>
+            <Canvas camera={{ position: [0, 0, cameraZ], fov: 50 }}>
                 <ambientLight intensity={2.5} />
                 <directionalLight position={[5, 5, 5]} intensity={4} />
                 <Suspense fallback={null}>
@@ -124,6 +133,7 @@ export default function MultiCanvasViewer({
     modelSpacingY = 3.0,
     canvasClassName = 'w-full',
     cardClassName = 'w-full',
+    columns = 3,
 }: {
     categories: SkillCategory[];
     onModelClick: (skill: Skill) => void;
@@ -133,6 +143,7 @@ export default function MultiCanvasViewer({
     modelSpacingY?: number;
     canvasClassName?: string;
     cardClassName?: string;
+    columns?: number;
 }) {
     return (
         <div className={`grid ${gridClassName} gap-6 w-full`}>
@@ -151,6 +162,7 @@ export default function MultiCanvasViewer({
                         spacingX={modelSpacingX}
                         spacingY={modelSpacingY}
                         canvasClassName={canvasClassName}
+                        columns={columns}
                     />
                 </div>
             ))}

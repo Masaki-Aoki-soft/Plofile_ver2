@@ -61,6 +61,11 @@
                 "name": "Laravel",
                 "path": "/gbl/Laravel.glb",
                 "description": "Spring Bootを使用した後に学んで一時期はReactと併用していましたが、最新技術に食いついてしまった為、あまり使用しませんでした。"
+            },
+            {
+                "name": "Rust",
+                "path": "/gbl/Rust.glb",
+                "description": "Tauriというクロスプラットフォームフレームワークを使用するために学びました。処理速度が高速で堅牢ですが、C言語より学習難易度が高かったです。"
             }
         ]
     },
@@ -88,9 +93,9 @@
         "title": "Others",
         "models": [
             {
-                "name": "PostgreSQL",
-                "path": "/gbl/PostgreSQL.glb",
-                "description": "一番よく使うデータベースです。他にはSQLiteやMySQLを使いますが、drizzleやPrismaを使う関係でsupabaseやneonDBのPostgreSQLを使うことが多いです。"
+                "name": "Tauri",
+                "path": "/gbl/Tauri.glb",
+                "description": "クロスプラットフォームを開発できるフレームワークで、デスクトップアプリ開発をメインに使用しています。WASMが使いやすいのが魅力的です。"
             },
             {
                 "name": "Java",

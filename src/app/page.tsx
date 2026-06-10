@@ -12,6 +12,7 @@ import { YasashisaFont } from '@/../public/fonts/YasashisaFonts';
 import Link from 'next/link';
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { motion } from 'framer-motion';
+import profileData from './data/profileData.json';
 
 /**
  * @returns {JSX.Element}
@@ -53,12 +54,12 @@ const DashBoardPage: NextPage = () => {
                         <span className={AprilFonts.className}>
                             {/* テキストアニメーション（ブラーインアップ） */}
                             <TextAnimate animation="blurInUp" by="character" once>
-                                Masaki Aoki /
+                                {`${profileData.nameEn} /`}
                             </TextAnimate>
                         </span>
                         <span className={`${YasashisaFont.className}`}>
                             <TextAnimate animation="blurInUp" by="character" once>
-                                青木 雅季
+                                {profileData.nameJa}
                             </TextAnimate>
                         </span>
                     </div>
@@ -68,7 +69,7 @@ const DashBoardPage: NextPage = () => {
                         className={`text-amber-200 text-xl md:text-2xl ${YasashisaFont.className}`}
                     >
                         <TextAnimate animation="blurInUp" by="character" once>
-                            芝浦工業大学大学院 1年
+                            {profileData.affiliation}
                         </TextAnimate>
                     </div>
 
@@ -77,7 +78,7 @@ const DashBoardPage: NextPage = () => {
                         className={`text-amber-200 text-lg md:text-2xl ${YasashisaFont.className}`}
                     >
                         <TextAnimate animation="blurInUp" by="character" once>
-                            電子情報工学専攻　宇宙ロボットシステム研究室
+                            {profileData.majorAndLab}
                         </TextAnimate>
                     </div>
                 </div>

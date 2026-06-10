@@ -94,7 +94,7 @@ const AboutPage: NextPage = () => {
                         {/* 自己紹介文 */}
                         <div className="text-base sm:text-lg text-center md:text-left px-2 md:px-0">
                             <p className="leading-relaxed">
-                                芝浦工業大学でCSを専攻してます。Webアプリの開発や所属している「鳥人間」という部活動ではマイコンを使った電子回路設計、Androidアプリ開発なんかも担っています。
+                                芝浦工業大学大学院で宇宙・制御工学を専攻してます。Webアプリの開発や学部時代に所属していた「鳥人間」という部活動ではマイコンを使った電子回路設計、Androidアプリ開発なんかも担っていました。
                                 趣味は幼少期から習っているピアノです。
                             </p>
                             <p className="leading-relaxed mt-2">

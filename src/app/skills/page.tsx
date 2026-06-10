@@ -43,6 +43,7 @@ type MultiCanvasViewerProps = {
     modelSpacingY?: number;
     canvasClassName?: string;
     cardClassName?: string;
+    columns?: number; // 1行あたりのモデル数（レスポンシブ切替用）
 };
 
 // 3Dモデルビューアを動的にインポート（クライアントサイドでのみレンダリング）
@@ -50,6 +51,26 @@ const MultiCanvasViewer = dynamic<MultiCanvasViewerProps>(
     () => import('../components/MultiModelViewer').then((m) => m.default),
     { ssr: false, loading: () => <div className="w-full h-[350px] md:h-[400px]" /> } // ロード中は空のdivを表示
 );
+
+/**
+ * 画面幅がモバイルサイズかどうかを判定するカスタムフック
+ * @param breakpoint 境界となる幅（px）デフォルトはTailwindのsm（640px）
+ */
+const useIsMobile = (breakpoint = 640) => {
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const mediaQuery = window.matchMedia(`(max-width: ${breakpoint - 1}px)`);
+        // 初期値を設定
+        setIsMobile(mediaQuery.matches);
+        // 画面幅の変化を監視
+        const handleChange = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+        mediaQuery.addEventListener('change', handleChange);
+        return () => mediaQuery.removeEventListener('change', handleChange);
+    }, [breakpoint]);
+
+    return isMobile;
+};
 
 /**
  * Skillsページコンポーネント
@@ -63,6 +84,8 @@ const SkillsPage: NextPage = () => {
     // ロード済みのカテゴリ数を管理するstate
     const [loadedCategories, setLoadedCategories] = useState(0);
     const totalCategories = skillData.length; // 全カテゴリ数
+    // モバイル判定（640px未満）
+    const isMobile = useIsMobile();
 
     // カテゴリがロードされるたびにカウントを増やすコールバック関数
     const handleCategoryLoad = useCallback(() => {
@@ -120,13 +143,16 @@ const SkillsPage: NextPage = () => {
                             {skillData.map((category) => (
                                 <CarouselItem key={category.title} className="pl-4 basis-full">
                                     {/* 各カテゴリの3Dモデルビューア */}
+                                    {/* key={isMobile ? 'm' : 'd'} で列数切替時に再マウントさせて再配置を確実にする */}
                                     <MultiCanvasViewer
+                                        key={isMobile ? 'mobile' : 'desktop'}
                                         categories={[category]}
                                         onModelClick={handleModelClick}
                                         onAllModelsLoaded={handleCategoryLoad}
                                         gridClassName="grid-cols-1 w-full"
                                         cardClassName="w-full sm:w-[80%] max-w-[620px]"
                                         canvasClassName="w-full"
+                                        columns={isMobile ? 2 : 3} // スマホ: 2列×3行 / PC: 3列×2行
                                     />
                                 </CarouselItem>
                             ))}
@@ -136,8 +162,13 @@ const SkillsPage: NextPage = () => {
                         <div className="pointer-events-none absolute inset-0 z-20 flex">
                             <div className="relative mx-auto h-full w-full sm:w-[80%] max-w-[620px]">
                                 {/* 前へボタン */}
+                                {/*
+                                  Tailwindはモバイルファーストなので、ベース（無印）がスマホに適用される。
+                                  修正前は -left-16 がベースだったため、スマホで画面外に出て見えなくなっていた。
+                                  ベースを left-1（画面内）にし、画面が広くなるにつれて外側へ移動させる。
+                                */}
                                 <motion.div
-                                    className="pointer-events-auto absolute -left-16 md:-left-16 sm:-left-4 top-1/2 -translate-y-1/2"
+                                    className="pointer-events-auto absolute left-1 sm:-left-4 md:-left-16 top-1/2 -translate-y-1/2"
                                     animate={{ x: [-4, 0, -4] }} // 左右に揺れるアニメーション
                                     transition={{
                                         repeat: Infinity,
@@ -145,12 +176,12 @@ const SkillsPage: NextPage = () => {
                                         ease: 'easeInOut',
                                     }}
                                 >
-                                    <CarouselPrevious className="static cursor-pointer bg-[#2a1a0a]/80 border-amber-700/50 text-amber-300 hover:bg-[#3a2a1a]/80" />
+                                    <CarouselPrevious className="static cursor-pointer bg-[#2a1a0a]/80 border-amber-700/50 text-amber-300 hover:bg-[#3a2a1a]/80 disabled:opacity-30 disabled:cursor-default" />
                                 </motion.div>
 
                                 {/* 次へボタン */}
                                 <motion.div
-                                    className="pointer-events-auto absolute -right-16 md:-right-16 sm:-right-4 top-1/2 -translate-y-1/2"
+                                    className="pointer-events-auto absolute right-1 sm:-right-4 md:-right-16 top-1/2 -translate-y-1/2"
                                     animate={{ x: [4, 0, 4] }} // 左右に揺れるアニメーション
                                     transition={{
                                         repeat: Infinity,
@@ -158,7 +189,7 @@ const SkillsPage: NextPage = () => {
                                         ease: 'easeInOut',
                                     }}
                                 >
-                                    <CarouselNext className="static cursor-pointer bg-[#2a1a0a]/80 border-amber-700/50 text-amber-300 hover:bg-[#3a2a1a]/80" />
+                                    <CarouselNext className="static cursor-pointer bg-[#2a1a0a]/80 border-amber-700/50 text-amber-300 hover:bg-[#3a2a1a]/80 disabled:opacity-30 disabled:cursor-default" />
                                 </motion.div>
                             </div>
                         </div>
@@ -169,7 +200,8 @@ const SkillsPage: NextPage = () => {
                 <CustomModal isOpen={!!selectedSkill} onClose={() => setSelectedSkill(null)}>
                     {selectedSkill && (
                         <div>
-                            <h2 className="text-amber-300 text-2xl font-bold">
+                            {/* pr-12: absolute配置の×ボタンとタイトルが重ならないように右側に余白を確保 */}
+                            <h2 className="text-amber-300 text-2xl font-bold pr-12">
                                 {selectedSkill.name}
                             </h2>
                             <p className="text-amber-300/90 pt-4">{selectedSkill.description}</p>

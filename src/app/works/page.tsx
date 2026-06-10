@@ -7,7 +7,7 @@ import { NextPage } from 'next';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { AnimatedLeaves } from '../components/leafAnimation';
-import { CustomModal } from '../components/CustomModal';
+import { WorkModal } from '../components/WorkModal';
 import worksData from '../data/worksData.json';
 import {
     Carousel,
@@ -46,7 +46,8 @@ const WorksPage: NextPage = () => {
 
                 {/* 作品カルーセル */}
                 <div className="z-10 w-full max-w-6xl">
-                    <Carousel opts={{ loop: true }} className="relative w-full">
+                    {/* loop: false にすることで端に到達したら矢印が自動で無効化される */}
+                    <Carousel opts={{ loop: false }} className="relative w-full">
                         <CarouselContent>
                             {worksData.map((category: WorkCategory) => (
                                 <CarouselItem key={category.category} className="basis-full">
@@ -123,7 +124,7 @@ const WorksPage: NextPage = () => {
                                                     ease: 'easeInOut',
                                                 }}
                                             >
-                                                <CarouselPrevious className="static cursor-pointer bg-[#2a1a0a]/80 border-amber-700/50 text-amber-300 hover:bg-[#3a2a1a]/80" />
+                                                <CarouselPrevious className="static cursor-pointer bg-[#2a1a0a]/80 border-amber-700/50 text-amber-300 hover:bg-[#3a2a1a]/80 disabled:opacity-30 disabled:cursor-default" />
                                             </motion.div>
 
                                             {/* 右矢印：縦中央。左右ガター（px）内に置くのでカードと被らない */}
@@ -136,7 +137,7 @@ const WorksPage: NextPage = () => {
                                                     ease: 'easeInOut',
                                                 }}
                                             >
-                                                <CarouselNext className="static cursor-pointer bg-[#2a1a0a]/80 border-amber-700/50 text-amber-300 hover:bg-[#3a2a1a]/80" />
+                                                <CarouselNext className="static cursor-pointer bg-[#2a1a0a]/80 border-amber-700/50 text-amber-300 hover:bg-[#3a2a1a]/80 disabled:opacity-30 disabled:cursor-default" />
                                             </motion.div>
                                         </div>
                                     </div>
@@ -146,12 +147,13 @@ const WorksPage: NextPage = () => {
                     </Carousel>
                 </div>
 
-                {/* プロジェクト詳細モーダル */}
-                <CustomModal isOpen={!!selectedProject} onClose={() => setSelectedProject(null)}>
+                {/* プロジェクト詳細モーダル（Worksページ専用のWorkModalを使用） */}
+                <WorkModal isOpen={!!selectedProject} onClose={() => setSelectedProject(null)}>
                     {selectedProject && (
                         <div>
+                            {/* pr-12: absolute配置の×ボタンとタイトルが重ならないように右側に余白を確保 */}
                             <h2
-                                className={`${YasashisaFont.className} text-amber-300 text-2xl font-bold mb-4`}
+                                className={`${YasashisaFont.className} text-amber-300 text-2xl font-bold mb-4 pr-12`}
                             >
                                 {selectedProject.title}
                             </h2>
@@ -197,7 +199,7 @@ const WorksPage: NextPage = () => {
                             )}
                         </div>
                     )}
-                </CustomModal>
+                </WorkModal>
             </main>
         </>
     );
