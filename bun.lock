@@ -204,7 +204,7 @@
 
     "@eslint/plugin-kit": ["@eslint/plugin-kit@0.3.5", "", { "dependencies": { "@eslint/core": "^0.15.2", "levn": "^0.4.1" } }, "sha512-Z5kJ+wU3oA7MMIqVR9tyZRtjYPr4OC004Q4Rw7pgOKUOKkJfZ3O24nz3WYfGRpMDNmcOi3TwQOmgm7B7Tpii0w=="],
 
-    "@google/gemini-cli": ["@google/gemini-cli@github:google-gemini/gemini-cli#ab1b748", { "dependencies": { "@lvce-editor/ripgrep": "^1.6.0", "simple-git": "^3.28.0", "strip-ansi": "^7.1.0" }, "optionalDependencies": { "@lydell/node-pty": "1.1.0", "@lydell/node-pty-darwin-arm64": "1.1.0", "@lydell/node-pty-darwin-x64": "1.1.0", "@lydell/node-pty-linux-x64": "1.1.0", "@lydell/node-pty-win32-arm64": "1.1.0", "@lydell/node-pty-win32-x64": "1.1.0", "node-pty": "^1.0.0" }, "bin": { "gemini": "bundle/gemini.js" } }, "google-gemini-gemini-cli-ab1b748"],
+    "@google/gemini-cli": ["@google/gemini-cli@github:google-gemini/gemini-cli#ab1b748", { "dependencies": { "@lvce-editor/ripgrep": "^1.6.0", "simple-git": "^3.28.0", "strip-ansi": "^7.1.0" }, "optionalDependencies": { "@lydell/node-pty": "1.1.0", "@lydell/node-pty-darwin-arm64": "1.1.0", "@lydell/node-pty-darwin-x64": "1.1.0", "@lydell/node-pty-linux-x64": "1.1.0", "@lydell/node-pty-win32-arm64": "1.1.0", "@lydell/node-pty-win32-x64": "1.1.0", "node-pty": "^1.0.0" }, "bin": { "gemini": "bundle/gemini.js" } }, "google-gemini-gemini-cli-ab1b748", "sha512-iKoJgll9Extu2DPvejKRpVHojvP75w0NtC4c9Cv6pAWAMBqzpu/l7bKnNWOacm5LAa3aXHKjJ4D89AFAju4MGQ=="],
 
     "@hono/zod-validator": ["@hono/zod-validator@0.7.2", "", { "peerDependencies": { "hono": ">=3.9.0", "zod": "^3.25.0 || ^4.0.0" } }, "sha512-ub5eL/NeZ4eLZawu78JpW/J+dugDAYhwqUIdp9KYScI6PZECij4Hx4UsrthlEUutqDDhPwRI0MscUfNkvn/mqQ=="],
 
