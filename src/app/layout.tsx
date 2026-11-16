@@ -49,7 +49,7 @@ const jsonLd = {
       },
       alumniOf: { "@type": "CollegeOrUniversity", name: "芝浦工業大学" },
       knowsAbout: skillsData.flatMap((category) =>
-        category.models.map((model) => model.name)
+        category.models.map((model) => model.name),
       ),
       sameAs: [
         "https://github.com/Masaki-Aoki-soft",
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
   },
   description: site_description, // サイトの説明
   verification: {
-    google: "niB82wTc8sW-wt6vkn_TacBpAJI1X7SUyaAUqQWW4Uo",
+    google: "lh7tuH0zYIUI9xM1krVk0m-OrrH0VSKp4PQClGVNGII",
   },
   keywords: ["aoki", "profile", "青木", "雅季"], // SEOキーワード
   // Open Graphプロトコルの設定（Facebookなどで表示される情報）
